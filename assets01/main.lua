@@ -4,13 +4,7 @@ local blue = 0
 local velocity = nil
 local counter = 0
 local STARTINGCOUNTER = 60
-
-local display1 = engine.display.getdisplaybyindex(0)
-local window1 = engine.display.createwindow(display1, display1.left, display1.top, display1.width, display1.height)
-local viewport1 = engine.display.newviewport(window1, 0, 0, display1.width, display1.height)
-
-engine.display.setwindowtitle(window1, "Color Shifter")
-engine.display.showwindow(window1)
+local window
 
 local function getNumber()
 	return engine.math.random(0, 128) / 255
@@ -42,11 +36,17 @@ function engine.update(dt)
 		velocity.b = -0.1
 	end
 
-	engine.display.setclearcolor(window1, red, green, blue, 1.0)
+	engine.display.setclearcolor(window, red, green, blue, 1.0)
 end
 
 function engine.keyboard(buffer)
 	if (buffer == 'q') then
 		engine.requestshutdown()
 	end
+end
+
+function engine.started()
+	window = engine.createdefaultwindow()
+
+	engine.display.setwindowtitle(window, "Color Shifter")
 end
