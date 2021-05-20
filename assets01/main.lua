@@ -36,7 +36,7 @@ function engine.update(dt)
 		velocity.b = -0.1
 	end
 
-	engine.display.setclearcolor(window, red, green, blue, 1.0)
+	engine.display.set_clear_color(window, red, green, blue, 1.0)
 end
 
 function engine.keyboard(buffer)
@@ -48,5 +48,5 @@ end
 function engine.started()
 	window = engine.createdefaultwindow()
 
-	engine.display.setwindowtitle(window, "Color Shifter")
+	engine.display.set_window_title(window, "Color Shifter")
 end
